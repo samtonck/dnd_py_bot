@@ -1,15 +1,18 @@
+#!/usr/bin/python3
+
 from random import randint
 
+import requests
 from aiogram import Bot, Dispatcher, executor, types
-from aiogram.types import Message, ReplyKeyboardRemove, ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, \
-    InlineKeyboardButton
-from config import TOKEN_BOT, gender_kb, lvl_kb, race_kb, class_kb, background_kb, dice_kb, perform_kb
-import player
-import game_race
-import game_class
-import game_background
+from aiogram.types import Message
 
-bot = Bot(TOKEN_BOT)
+import game_background
+import game_class
+import game_race
+import player
+from config import TOKEN_BOT, ADMIN_CHAT_ID, gender_kb, lvl_kb, race_kb, class_kb, background_kb, dice_kb, perform_kb
+
+bot = Bot(token=TOKEN_BOT)
 dp = Dispatcher(bot)
 
 
@@ -594,4 +597,7 @@ async def action_cancel(message: Message):
 
 
 if __name__ == "__main__":
+    #  при старте в консоль выводится статус подключения а админу приходит сообщение о старте бота
+    print(requests.get(f'https://api.telegram.org/bot{TOKEN_BOT}/sendMessage?chat_id={ADMIN_CHAT_ID}&text=бот_start'))
+
     executor.start_polling(dp)

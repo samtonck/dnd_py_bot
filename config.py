@@ -1,7 +1,7 @@
-from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 TOKEN_BOT = '1676501133:AAE3PILf55H9AWs0YvFCcFmpYdQuFuPnM6w'
+ADMIN_CHAT_ID = 404942071
 TG_API_URL = 'https://telegg.ru/orig/bot'
 
 gender_kb = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).\
